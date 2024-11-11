@@ -1,0 +1,54 @@
+[
+  {
+    "ContainingType": "Olimpia.Controllers.DataController",
+    "Method": "Post",
+    "RelativePath": "Data",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createDataDto",
+        "Type": "Olimpia.Models.Dtos\u002BCreateDataDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Olimpia.Models.Data",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Olimpia.Controllers.PlayerController",
+    "Method": "Post",
+    "RelativePath": "player",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createPlayerDto",
+        "Type": "Olimpia.Models.Dtos\u002BCreatePlayerDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Olimpia.Models.Player",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

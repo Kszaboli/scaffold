@@ -1,0 +1,6 @@
+@Olimpia_HostAddress = http://localhost:5141
+
+GET {{Olimpia_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
