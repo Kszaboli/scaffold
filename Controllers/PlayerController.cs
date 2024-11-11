@@ -33,5 +33,69 @@ namespace Olimpia.Controllers
             }
             return BadRequest();
         }
+
+        [HttpGet]
+        public ActionResult<Player> Get()
+        {
+            using ( var context = new OlimpiaContext())
+            {
+                return Ok(context.Players.ToList());
+            }
+        }
+
+        [HttpGet("{id}")]
+        public ActionResult<Player> GetByid(Guid id)
+        {
+            using( var context = new OlimpiaContext())
+            {
+                var player = context.Players.FirstOrDefault(x => x.Id == id);
+                if (player != null)
+                {
+                    return Ok(player);
+                }
+                else
+                {
+                    return NotFound();
+                }
+            }
+        }
+
+        [HttpPut("{id}")]
+        public ActionResult<Player> Put(Guid id, UpdatePlayerDto updatePlayerDto)
+        {
+            using (var context = new OlimpiaContext())
+            {
+                var existingPlayer = context.Players.FirstOrDefault(x => x.Id == id);
+                if (existingPlayer != null)
+                {
+                    existingPlayer.Name = updatePlayerDto.Name;
+                    existingPlayer.Height = updatePlayerDto.Height;
+                    existingPlayer.Weight = updatePlayerDto.Weight;
+                    existingPlayer.Age = updatePlayerDto.Age;
+
+                    context.Players.Update(existingPlayer);
+                    context.SaveChanges();
+
+                    return Ok(existingPlayer);
+                }
+                return NotFound();
+            }
+        }
+
+        [HttpDelete]
+        public ActionResult<Player> Delete(Guid id)
+        {
+            using (var context = new OlimpiaContext())
+            {
+                var player = context.Players.FirstOrDefault(x => x.Id == id);
+                if (player != null)
+                {
+                    context.Players.Remove(player);
+                    context.SaveChanges();
+                    return StatusCode(200);
+                }
+                return NotFound();
+            }
+        }
     }
 }
